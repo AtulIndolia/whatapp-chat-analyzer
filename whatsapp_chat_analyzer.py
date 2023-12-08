@@ -1,4 +1,4 @@
-import sns as sns
+
 import streamlit as st
 import preprocessor
 import helper
