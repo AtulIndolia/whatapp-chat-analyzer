@@ -7,6 +7,6 @@ dotenv
 urlextract
 wordcloud
 collections
-emoji<=1.7
+emoji
 re
 matplotlib.pyplot
