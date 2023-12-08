@@ -6,3 +6,5 @@ wordcloud
 pandas
 emoji
 pymongo
+dotenv
+wordcloud
