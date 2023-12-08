@@ -6,4 +6,3 @@ wordcloud
 pandas
 emoji
 pymongo
-re
