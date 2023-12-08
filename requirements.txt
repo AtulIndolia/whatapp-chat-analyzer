@@ -6,4 +6,4 @@ wordcloud
 pandas
 emoji
 pymongo
-dotenv
+python-dotenv==0.10.1
