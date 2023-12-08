@@ -1,0 +1,12 @@
+streamlit
+pandas
+numpy
+seaborn
+pymongo
+dotenv
+urlextract
+wordcloud
+collections
+emoji<=1.7
+re
+matplotlib.pyplot
