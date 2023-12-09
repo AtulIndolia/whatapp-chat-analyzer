@@ -1,15 +1,24 @@
 import re
 import pandas as pd
 def preprocess(data):
-    pattern = '\[\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}:\d{2}\s?(?:AM|PM|am|pm)\]\s'
-    message = re.split(pattern, data)
-    messages = message[1:]
-    datesPattern = '\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}:\d{2}\s?(?:AM|PM|am|pm)'
-    dates = re.findall(datesPattern, data)
+    if data.startswith("["):
+        pattern = '\[\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}:\d{2}\s?(?:AM|PM|am|pm)\]\s'
+        message = re.split(pattern, data)
+        messages = message[1:]
+        datesPattern = '\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}:\d{2}\s?(?:AM|PM|am|pm)'
+        dates = re.findall(datesPattern, data)
 
-    df = pd.DataFrame({'user_messages': messages, 'date': dates})
-    # convert message date type
-    df['date'] = pd.to_datetime(df['date'])
+        df = pd.DataFrame({'user_messages': messages, 'date': dates})
+        # convert message date type
+        df['date'] = pd.to_datetime(df['date'])
+    else:
+        pattern = '\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}\s?(?:AM|PM|am|pm)\s-\s'
+        messages = re.split(pattern, data)[1:]
+        datesPattern = '\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}\s?(?:AM|PM|am|pm)'
+        dates = re.findall(datesPattern, data)
+        df = pd.DataFrame({'user_messages': messages, 'date': dates})
+        # convert message_date type
+        df['date'] = pd.to_datetime(df['date'])
 
     users = []
     messages = []
